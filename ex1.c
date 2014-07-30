@@ -5,10 +5,16 @@
 
 #pragma GCC visibility push(hidden)
 
+/**
+ * Constructor called when `library` is first loaded.
+ */
 void __attribute__((constructor)) library_constructor()
 {
     puts("Welcome from " __FILE__ " - constructor!");
 }
+/**
+ * Constructor called when `library` is to be unloaded.
+ */
 void __attribute__((destructor)) library_destructor()
 {
     puts("Goodbye from " __FILE__ " - destructor!");
@@ -16,6 +22,10 @@ void __attribute__((destructor)) library_destructor()
 
 #pragma GCC visibility pop
 
+/**
+ * Function contained in this library.
+ *   Displays `Hello from ...` when called.
+ */
 void hello(void)
 {
     puts("Hello from " __FILE__ "");
